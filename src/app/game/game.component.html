@@ -1,0 +1,7 @@
+<ng-container *ngIf=""> </ng-container>
+<app-game-settings *ngIf="!(numAttempts$ | async)"></app-game-settings>
+
+<app-game-board
+  *ngIf="numAttempts$ | async as numAttempts"
+  [maxAttempts]="numAttempts"
+></app-game-board>

@@ -1,0 +1,209 @@
+@import "../../../styles/variables";
+
+.header-container {
+  display: flex;
+  color: $text-accent;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.7rem;
+  padding-right: 1rem;
+  padding-left: 1rem;
+
+  .label {
+    color: $text-secondary;
+    padding-right: 1rem;
+  }
+
+  .attempts-left {
+    font-size: 1.2rem;
+  }
+
+  .status-message {
+    color: $text-primary;
+    padding: 0.3rem;
+    background-color: $text-accent;
+    border-radius: 5px;
+    font-size: 0.75rem;
+  }
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 0.2fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 0.01fr auto;
+  grid-gap: 5px;
+  padding: 1rem;
+  height: calc(100vh - 144px);
+
+  .grid {
+    border: 0.5px solid #7f7f7f;
+    font-size: 0.8rem;
+    color: $text-secondary;
+    cursor: pointer;
+    transition: box-shadow 0.3s;
+
+    &.grid-header {
+      border: none;
+      padding: 0;
+      margin: auto;
+      &:hover {
+        box-shadow: none;
+        color: $text-secondary;
+      }
+    }
+
+    &.miss-status {
+      width: 50%;
+      height: 18%;
+      position: relative;
+      top: 39%;
+      left: 23%;
+      border-radius: 5px;
+      background: #47002b;
+      transform-origin: center center;
+      transform: rotate(45deg);
+      box-shadow: 3px 3px #c77daa;
+      animation: blow 0.5s ease-in;
+
+      @media screen and (max-width: 480px) {
+        height: 5%;
+      }
+
+      @media (min-width: 481px) and (max-width: 768px) {
+        height: 9%;
+      }
+    }
+
+    @keyframes blow {
+      0% {
+        transform: scale(0);
+      }
+      1% {
+        transform: rotate(45deg);
+      }
+      80% {
+        transform: scale(1.7);
+      }
+      100% {
+        transform: scale(1);
+      }
+    }
+
+    &.miss-status::after {
+      content: "";
+      width: 95%;
+      height: 90%;
+      position: absolute;
+      border-radius: 5px;
+      background: #47002b;
+      transform: rotate(90deg);
+      box-shadow: 3px -3px #c77daa;
+
+      @media screen and (max-width: 480px) {
+        width: 110%;
+      }
+    }
+
+    &.hit-status {
+      position: relative;
+      bottom: -50%;
+      left: 30%;
+      width: 50%;
+      height: 35%;
+      background: #851b15;
+      border-radius: 5px 5px 50px 35px;
+      animation: wave 1s ease-in-out infinite alternate;
+
+      @media screen and (max-width: 768px) {
+        left: 8%;
+        width: 80%;
+        height: 25%;
+      }
+    }
+
+    @keyframes wave {
+      0% {
+        transform: rotate(-7deg);
+      }
+      100% {
+        transform: rotate(5deg);
+      }
+    }
+
+    &.hit-status::after {
+      content: "";
+      position: absolute;
+      top: 25%;
+      left: 15%;
+      width: 10%;
+      height: 25%;
+      background: #d2995f;
+      border-radius: 50%;
+      box-shadow: 15px 0 #fcce9e, 30px 0 #d2995f;
+
+      @media screen and (max-width: 768px) {
+        top: 8%;
+        left: 2%;
+        width: 0;
+        height: 25%;
+      }
+    }
+
+    &.hit-status::before {
+      content: "";
+      position: absolute;
+      bottom: 130%;
+      left: 30%;
+      width: 26%;
+      height: 85%;
+      background: #5a0400;
+      box-shadow: 15px 4px 0 -4px #ac3b35;
+
+      @media screen and (max-width: 768px) {
+        bottom: 125%;
+        left: 2%;
+        width: 57%;
+        height: 75%;
+      }
+    }
+
+    &:first-child {
+      border: none;
+    }
+
+    &:hover {
+      box-shadow: -13px 11px 25px 1px rgba(0, 0, 0, 0.55);
+      color: $text-accent;
+    }
+  }
+}
+
+.game-over-modal {
+  background-color: $bg-primary;
+  color: $text-primary;
+  height: 150px;
+  width: 250px;
+  text-align: center;
+  border-radius: 5px;
+  font-size: 1.2rem;
+
+  .dialog-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+
+    .actions-container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .action-button {
+      background-color: $text-accent;
+      font-size: 1.2rem;
+      padding: 0.4rem;
+      border-radius: 4px;
+      padding-top: 0.5rem;
+    }
+  }
+}
