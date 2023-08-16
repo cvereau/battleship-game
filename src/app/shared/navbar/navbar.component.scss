@@ -1,0 +1,76 @@
+@import "../../../styles/variables";
+
+.navbar {
+  background-color: $bg-primary;
+  overflow: hidden;
+  z-index: 999;
+}
+
+.navbar a {
+  display: block;
+  float: right;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  color: $text-primary;
+  height: 2rem;
+  line-height: 2rem;
+
+  &:first-child {
+    float: left;
+  }
+
+  .logo-icon {
+    font-size: 1.5rem;
+    padding-left: 1rem;
+    transform: rotate(0deg);
+    transition: 600ms;
+    vertical-align: middle;
+
+    &:hover {
+        transform: rotate(-180deg);
+    }
+  }
+}
+
+.navbar a:not(:first-child):hover {
+  color: $text-accent;
+}
+
+.navbar a.active {
+  color: $text-accent;
+}
+
+.navbar .icon {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .navbar a:not(:first-child) {
+    display: none;
+  }
+  .navbar a.icon {
+    float: right;
+    display: block;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .navbar.responsive {
+    position: relative;
+  }
+  .navbar.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .navbar.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+
+.spacer {
+    flex: 1 1 auto
+}

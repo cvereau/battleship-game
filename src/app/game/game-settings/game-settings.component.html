@@ -1,0 +1,58 @@
+<div class="settings-container">
+  <div class="attempts-mode-selector">
+    <input
+      type="radio"
+      value="Manual"
+      name="radioAttemptsMode"
+      [(ngModel)]="attemptsSelectionMode"
+    />
+    Manual
+    <span class="spacer"></span>
+    <input
+      type="radio"
+      value="Predefined"
+      name="radioAttemptsMode"
+      [(ngModel)]="attemptsSelectionMode"
+    />
+    Predefined
+  </div>
+  <ng-container
+    *ngIf="
+      attemptsSelectionMode === GameAttemptsSelectionMode.Manual.toString()
+    "
+  >
+    <div class="label">Enter number of turns</div>
+
+    <div>
+      <input
+        type="text"
+        posNumbersOnly
+        class="attempts-input"
+        [(ngModel)]="attemptsNumber"
+      />
+    </div>
+  </ng-container>
+
+  <ng-container
+    *ngIf="
+      attemptsSelectionMode == GameAttemptsSelectionMode.Predefined.toString()
+    "
+  >
+    <div class="label">Select a Level</div>
+    <div>
+      <select
+        class="attemptsSelector"
+        id="attemptsSelector"
+        [(ngModel)]="attemptsSelected"
+      >
+        <option value="-1">Easy (Infinite turns)</option>
+        <option value="100">Medium (100 turns)</option>
+        <option value="50">Hard (50 turns)</option>
+      </select>
+    </div>
+  </ng-container>
+
+  <button class="play-button" [disabled]="calculateDisableStatus()" (click)="playGame()">
+    PLAY
+  </button>
+</div>

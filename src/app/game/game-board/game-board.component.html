@@ -1,0 +1,55 @@
+<div class="header-container">
+  <section>
+    <span class="label">Attempts left:</span>
+    <span class="attempts-left"
+      ><strong> {{ maxAttempts === -1 ? "Infinite" : maxAttempts - turns }} </strong>
+    </span>
+  </section>
+  <section>
+    <div *ngIf="statusMessage.length" class="status-message" [@fade]="'in'">
+      {{ statusMessage }}
+    </div>
+  </section>
+</div>
+
+<div class="grid-container">
+  <div
+    class="grid"
+    *ngFor="let tile of tilesGrid"
+    [ngClass]="{
+      'grid-header': tile.isHeader,
+      'hit-status': tile.hitStatus,
+      'miss-status': tile.missStatus
+    }"
+    [attr.id]="tile.id"
+    [attr.disabled]="tile.disabled"
+    (click)="playTurn(tile)"
+  >
+    {{ tile.isHeader ? tile.value : "" }}
+  </div>
+</div>
+
+<!-- <button (click)="dialog.showModal()">TEST</button> -->
+<dialog #gameOverDialog class="game-over-modal">
+  <div class="dialog-container">
+    <ng-container *ngIf="gameStatus === GameStatus.Win">
+      <div>YOU WON!</div>
+      <div class="actions-container">
+        <button class="action-button" (click)="tryAgain(gameOverDialog)">
+          New Game
+        </button>
+        <button class="action-button" (click)="goToGameslist()">
+          Go to Games List
+        </button>
+      </div>
+    </ng-container>
+    <ng-container *ngIf="gameStatus === GameStatus.Lose">
+      <div>YOU LOST!</div>
+      <div class="actions-container">
+        <button class="action-button" (click)="tryAgain(gameOverDialog)">
+          Try Again
+        </button>
+      </div>
+    </ng-container>
+  </div>
+</dialog>

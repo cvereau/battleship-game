@@ -1,0 +1,46 @@
+@import "../../../styles/variables";
+
+.settings-container {
+  padding-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .attempts-mode-selector {
+    margin-bottom: 2rem;
+  }
+
+  .label {
+    color: $text-secondary;
+  }
+
+  .spacer {
+    padding: 0 2rem;
+  }
+
+  .attempts-input {
+    margin-top: 0.5rem;
+    background: $bg-primary;
+    color: $text-primary;
+    font-size: 1.5rem;
+  }
+
+  .attemptsSelector {
+    margin-top: 0.5rem;
+    background: $bg-primary;
+    color: $text-primary;
+    font-size: 1rem;
+    width: 260px;
+    padding: 0.4rem;
+  }
+}
+
+.play-button {
+  background-color: $text-accent;
+  padding: 0.5rem;
+  border-radius: 4px;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  width: 260px;
+}
