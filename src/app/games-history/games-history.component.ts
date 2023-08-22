@@ -17,13 +17,4 @@ export class GamesHistoryComponent implements OnInit {
   ngOnInit(): void {
     this.gamesHistory$ = this.gameService.getGamesHistory();
   }
-
-  formatDate(date: any) {
-    const d = new Date(date);
-    return (
-      [d.getMonth() + 1, d.getDate(), d.getFullYear()].join('/') +
-      ' ' +
-      [d.getHours(), d.getMinutes(), d.getSeconds()].join(':')
-    );
-  }
 }

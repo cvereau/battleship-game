@@ -7,8 +7,8 @@
     <th>Status</th>
   </tr>
   <tr *ngFor="let game of gamesHistory$ | async">
-    <td>{{ formatDate(game.startTime) }}</td>
-    <td>{{ formatDate(game.endTime) }}</td>
+    <td>{{ game.startTime | date : "medium" }}</td>
+    <td>{{ game.endTime | date : "medium" }}</td>
     <td>{{ game.turnsUsed }}</td>
     <td>{{ game.overallAccuracy.toFixed(2) }} %</td>
     <td>{{ game.status ? "Lose" : "Win" }}</td>
